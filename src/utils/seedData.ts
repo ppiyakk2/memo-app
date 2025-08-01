@@ -13,6 +13,75 @@ export const sampleMemos: Memo[] = [
     updatedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
   },
   {
+    id: '7',
+    title: '마크다운 사용법 가이드',
+    content: `# 마크다운 사용법
+
+## 제목 (Heading)
+
+### H3 제목
+#### H4 제목
+
+## 텍스트 스타일
+
+**굵은 텍스트**와 *기울임 텍스트*를 사용할 수 있습니다.
+
+## 목록
+
+### 순서 있는 목록
+1. 첫 번째 항목
+2. 두 번째 항목
+3. 세 번째 항목
+
+### 순서 없는 목록
+- 항목 1
+- 항목 2
+  - 하위 항목 2-1
+  - 하위 항목 2-2
+
+## 인용문
+
+> 이것은 인용문입니다.
+> 여러 줄로 작성할 수 있습니다.
+
+## 코드
+
+인라인 코드: \`console.log('Hello World')\`
+
+코드 블록:
+\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+\`\`\`
+
+## 링크와 이미지
+
+[링크 텍스트](https://example.com)
+
+![이미지 설명](https://via.placeholder.com/300x200)
+
+## 표
+
+| 제목 1 | 제목 2 | 제목 3 |
+|--------|--------|--------|
+| 내용 1 | 내용 2 | 내용 3 |
+| 내용 4 | 내용 5 | 내용 6 |
+
+## 체크리스트
+
+- [x] 완료된 작업
+- [ ] 진행 중인 작업
+- [ ] 대기 중인 작업
+
+이제 마크다운으로 더 풍부한 메모를 작성할 수 있습니다!`,
+    category: 'study',
+    tags: ['마크다운', '가이드', '문법'],
+    isMarkdown: true,
+    createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // 1일 전
+    updatedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
     id: '2',
     title: 'React 18 새로운 기능 학습',
     content:

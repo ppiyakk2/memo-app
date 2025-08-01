@@ -7,6 +7,7 @@ import {
   MEMO_CATEGORIES,
   DEFAULT_CATEGORIES,
 } from '@/types/memo'
+import MarkdownEditor from './MarkdownEditor'
 
 interface MemoFormProps {
   isOpen: boolean
@@ -26,8 +27,10 @@ export default function MemoForm({
     content: '',
     category: 'personal',
     tags: [],
+    isMarkdown: false,
   })
   const [tagInput, setTagInput] = useState('')
+  const [isMarkdownMode, setIsMarkdownMode] = useState(false)
 
   // 편집 모드일 때 폼 데이터 설정
   useEffect(() => {
@@ -37,14 +40,18 @@ export default function MemoForm({
         content: editingMemo.content,
         category: editingMemo.category,
         tags: editingMemo.tags,
+        isMarkdown: editingMemo.isMarkdown || false,
       })
+      setIsMarkdownMode(editingMemo.isMarkdown || false)
     } else {
       setFormData({
         title: '',
         content: '',
         category: 'personal',
         tags: [],
+        isMarkdown: false,
       })
+      setIsMarkdownMode(false)
     }
     setTagInput('')
   }, [editingMemo, isOpen])
@@ -55,7 +62,10 @@ export default function MemoForm({
       alert('제목과 내용을 모두 입력해주세요.')
       return
     }
-    onSubmit(formData)
+    onSubmit({
+      ...formData,
+      isMarkdown: isMarkdownMode,
+    })
     onClose()
   }
 
@@ -168,28 +178,59 @@ export default function MemoForm({
               </select>
             </div>
 
-            {/* 내용 */}
-            <div>
-              <label
-                htmlFor="content"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+            {/* 마크다운 모드 토글 */}
+            <div className="flex items-center justify-between">
+              <label className="block text-sm font-medium text-gray-700">
                 내용 *
               </label>
-              <textarea
-                id="content"
-                value={formData.content}
-                onChange={e =>
-                  setFormData(prev => ({
-                    ...prev,
-                    content: e.target.value,
-                  }))
-                }
-                className="placeholder-gray-400 text-gray-400 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
-                placeholder="메모 내용을 입력하세요"
-                rows={8}
-                required
-              />
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-500">마크다운 모드</span>
+                <button
+                  type="button"
+                  onClick={() => setIsMarkdownMode(!isMarkdownMode)}
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                    isMarkdownMode ? 'bg-blue-600' : 'bg-gray-200'
+                  }`}
+                >
+                  <span
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                      isMarkdownMode ? 'translate-x-6' : 'translate-x-1'
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* 내용 입력 */}
+            <div>
+              {isMarkdownMode ? (
+                <MarkdownEditor
+                  value={formData.content}
+                  onChange={(value) =>
+                    setFormData(prev => ({
+                      ...prev,
+                      content: value,
+                    }))
+                  }
+                  placeholder="마크다운으로 메모를 작성하세요..."
+                  height={300}
+                />
+              ) : (
+                <textarea
+                  id="content"
+                  value={formData.content}
+                  onChange={e =>
+                    setFormData(prev => ({
+                      ...prev,
+                      content: e.target.value,
+                    }))
+                  }
+                  className="placeholder-gray-400 text-gray-400 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
+                  placeholder="메모 내용을 입력하세요"
+                  rows={8}
+                  required
+                />
+              )}
             </div>
 
             {/* 태그 */}

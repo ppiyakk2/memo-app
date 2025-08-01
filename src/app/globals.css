@@ -39,3 +39,145 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Markdown Editor Styles */
+.markdown-editor {
+  --md-editor-bg-color: transparent;
+  --md-editor-border-color: #e5e7eb;
+  --md-editor-text-color: #374151;
+}
+
+.markdown-editor .w-md-editor {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+}
+
+.markdown-editor .w-md-editor-toolbar {
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.markdown-editor .w-md-editor-content {
+  background-color: #ffffff;
+}
+
+.markdown-editor .w-md-editor-text {
+  color: #374151;
+}
+
+.markdown-editor .w-md-editor-text-pre,
+.markdown-editor .w-md-editor-text-input {
+  color: #374151;
+}
+
+/* Markdown Editor Preview Styles */
+.markdown-editor .w-md-editor-preview {
+  color: #374151;
+}
+
+.markdown-editor .w-md-editor-preview ul,
+.markdown-editor .w-md-editor-preview ol {
+  margin-bottom: 1em;
+}
+
+.markdown-editor .w-md-editor-preview li {
+  margin-bottom: 0.25em;
+}
+
+/* Markdown Viewer Styles */
+.markdown-viewer {
+  color: #374151;
+}
+
+/* 강제로 리스트 스타일 적용 */
+.markdown-viewer .wmde-markdown ul,
+.markdown-viewer .wmde-markdown ol,
+.markdown-editor .w-md-editor-preview ul,
+.markdown-editor .w-md-editor-preview ol {
+  list-style: revert !important;
+  padding-left: 1.5em !important;
+}
+
+.markdown-viewer .wmde-markdown li,
+.markdown-editor .w-md-editor-preview li {
+  display: list-item !important;
+  list-style: inherit !important;
+}
+
+.markdown-viewer .wmde-markdown {
+  background-color: transparent;
+  color: inherit;
+}
+
+.markdown-viewer .wmde-markdown h1,
+.markdown-viewer .wmde-markdown h2,
+.markdown-viewer .wmde-markdown h3,
+.markdown-viewer .wmde-markdown h4,
+.markdown-viewer .wmde-markdown h5,
+.markdown-viewer .wmde-markdown h6 {
+  color: #111827;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.markdown-viewer .wmde-markdown p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+.markdown-viewer .wmde-markdown ul,
+.markdown-viewer .wmde-markdown ol {
+  margin-bottom: 1em;
+}
+
+.markdown-viewer .wmde-markdown li {
+  margin-bottom: 0.25em;
+}
+
+.markdown-viewer .wmde-markdown blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #6b7280;
+}
+
+.markdown-viewer .wmde-markdown code {
+  background-color: #f3f4f6;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  color: #dc2626;
+}
+
+.markdown-viewer .wmde-markdown pre {
+  background-color: #f9fafb;
+  padding: 1em;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.markdown-viewer .wmde-markdown pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.markdown-viewer .wmde-markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.markdown-viewer .wmde-markdown th,
+.markdown-viewer .wmde-markdown td {
+  border: 1px solid #e5e7eb;
+  padding: 0.5em;
+  text-align: left;
+}
+
+.markdown-viewer .wmde-markdown th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
