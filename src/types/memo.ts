@@ -6,6 +6,7 @@ export interface Memo {
   tags: string[]
   createdAt: string
   updatedAt: string
+  isMarkdown?: boolean // 마크다운 여부
 }
 
 export interface MemoFormData {
@@ -13,6 +14,7 @@ export interface MemoFormData {
   content: string
   category: string
   tags: string[]
+  isMarkdown?: boolean // 마크다운 여부
 }
 
 export type MemoCategory = 'personal' | 'work' | 'study' | 'idea' | 'other'
